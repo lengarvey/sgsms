@@ -36,7 +36,7 @@ module Sgsms
       #return {:status => :ok, :id => 1 }
       case response
       when Net::HTTPSuccess
-        if response.body.match(/^OK: 0; .+ ID: ([\dabcdef]+).*^SMSGlobalMsgID:(\d+)/m)
+        if response.body.match(/^OK: 0; .+ ID: ([\dabcdef]+).*SMSGlobalMsgID:(\d+)/m)
           return {:status => :ok, :id => $1.to_s, :msgid => $2.to_i}
         elsif response.body.match(/^ERROR: (.*): (.*)$/)
           return {:status => :fail, :error => $1, :detail => $2}

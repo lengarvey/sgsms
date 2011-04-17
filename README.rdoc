@@ -11,6 +11,15 @@ sgsms - A tool to send sms via SMSGlobal's HTTP API.
 == Usage
 
     require 'sgsms'
+    texter = Sgsms::Texter.new
+    texter.send_sms("Hello", 1234567, {:user => 'smsglobalusername', :password=>'smsglobalpassword'})
+
+Alternatively you can supply the options hash to the constructor of the texter object:
+    texter = Sgsms::Texter.new({:user => 'smsglobalusername', :password=>'smsglobalpassword'})
+    texter.send_sms("Hello", 1234567)
+
+Finally, you can change who it appears to be from by supplying a :from in the options hash.
+    Sgsms::Texter.new({:user => 'smsglobalusername', :password=>'smsglobalpassword', :from => 'youknowwho'})
 
 == License
 
