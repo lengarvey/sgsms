@@ -7,7 +7,6 @@ require File.join(File.dirname(__FILE__), %w(lib sgsms version))
 spec = Gem::Specification.new do |s|
   s.name             = 'sgsms'
   s.version          = Sgsms::Version.to_s
-  s.has_rdoc         = true
   s.extra_rdoc_files = %w(README.rdoc)
   s.rdoc_options     = %w(--main README.rdoc)
   s.summary          = "This gem does ... "

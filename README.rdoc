@@ -2,7 +2,7 @@
 
 == Description
 
-Describe your gem here ...
+sgsms - A tool to send sms via SMSGlobal's HTTP API.
 
 == Installation
 
@@ -14,7 +14,7 @@ Describe your gem here ...
 
 == License
 
-Copyright (c) <year> <copyright holders>
+Copyright (c) <2011> <Leonard Garvey>
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
@@ -24,9 +24,6 @@ copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the
 Software is furnished to do so, subject to the following
 conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES

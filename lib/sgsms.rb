@@ -30,11 +30,23 @@ module Sgsms
 
       url = URI.join("http://smsglobal.com.au", 'http-api.php')
       url.query = sms_params.map {|k,v| "#{k.to_s}=#{v.to_s}"}.join('&')
-      response = Net::HTTP.get(url)
+      response = Net::HTTP.get_response(url)
 
-      puts response
-      return {:status => :ok, :id => 1 }
-
+      #puts response
+      #return {:status => :ok, :id => 1 }
+      case response
+      when Net::HTTPSuccess
+        if response.body.match(/^OK: 0; .+ ID: ([\dabcdef]+).*^SMSGlobalMsgID:(\d+)/m)
+          return {:status => :ok, :id => $1.to_s, :msgid => $2.to_i}
+        elsif response.body.match(/^ERROR: (.*): (.*)$/)
+          return {:status => :fail, :error => $1, :detail => $2}
+        else
+          raise "Cannot parse body: #{response.body}"
+        end
+      else
+        raise "Net error: #{response.inspect}"
+      end
+              
     end
 
   end

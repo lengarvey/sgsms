@@ -37,11 +37,16 @@ class SgsmsTest < Test::Unit::TestCase
       response = @smser.send_sms("Hello", 1234)  
       assert_equal response, {:status=>:ok, 
         :id=>"34a637908349a796",
-        :msgid=>6191845908398754} 
+        :msgid=>6191845908398754}
     end
 
     should "not send an sms" do
-      assert true
+      stub_send_failure
+      response = @smser.send_sms("Hello", 1234)  
+      assert_equal response, {:status => :fail, :error => "Missing parameter", :detail => "from"}
+      stub_send_failure "Missing parameter", "to"
+      response = @smser.send_sms("Hello", 1234)  
+      assert_equal response, {:status => :fail, :error => "Missing parameter", :detail => "to"}
     end
   end
 end
